@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="contact.css" rel="stylesheet"/>
+    <title>Form Kontak - Telegram Bot</title>
+</head>
+<body>
+<div class="header">
+    <h2>Kontak</h2>
+</div>
+</body> 
+
+<main>
+<body>
+    <div class="container">
+    <!-- Header -->
+    <div class="headerr">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="Store Logo">
+      <div class="info">
+        <h1>KENZDEV - Technologi</h1>
+        <p>Telegram @KenzDeveloper</p>
+      </div>
+    </div>
+
+        <body>
+            <main>
+            <section id="contact" class="card">
+                <h2>Kontak</h2>
+                <p>Jika ada pertanyaan atau butuh bantuan lebih lanjut, hubungi kami melalui Form Ini.</p>
+    <form id="contactForm">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" placeholder="Contoh: John Doe" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Contoh: john.doe@example.com" required>
+
+        <label for="number">Number:</label>
+        <input type="number" id="number" name="number" placeholder="Contoh: 628××××" optional>
+
+        <label for="message">Pesan:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
+
+        <input type="submit" class="btn" value="Kirim Pesan">
+    </form>            
+        
+    <div id="notification" class="notification"></div>
+</div>
+            </section>
+
+<script type="module">
+    import botConfig from './setting.js';  // Mengimpor setting.js
+
+    document.getElementById("contactForm").addEventListener("submit", function(event){
+        event.preventDefault();
+
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var number = document.getElementById("number").value;
+        var message = document.getElementById("message").value;
+
+        var currentDate = new Date();
+        var date = currentDate.toLocaleDateString();
+        var time = currentDate.toLocaleTimeString();
+
+        var messageText = `New Message From: ${email}\n================\n\n• Name: ${name}\n• Email: ${email}\n• Number: ${number}\n• Message: ${message}\n• Sent On: ${date} at ${time}\n\n================`;
+
+        var apiUrl = `https://api.telegram.org/bot${botConfig.botToken}/sendMessage?chat_id=${botConfig.chatId}&text=${encodeURIComponent(messageText)}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                var notification = document.getElementById("notification");
+                if (data.ok) {
+                    notification.className = "notification success";
+                    notification.innerHTML = "Pesan berhasil dikirim! ✅";
+                } else {
+                    notification.className = "notification error";
+                    notification.innerHTML = "Terjadi kesalahan, coba lagi ⚠️";
+                }
+                notification.style.display = "block";
+                setTimeout(function(){
+                    notification.style.display = "none";
+                }, 3000);
+            })
+            .catch(error => {
+                var notification = document.getElementById("notification");
+                notification.className = "notification error";
+                notification.innerHTML = "Terjadi kesalahan: " + error + " ⚠️";
+                notification.style.display = "block";
+                setTimeout(function(){
+                    notification.style.display = "none";
+                }, 3000);
+            });
+    });
+
+    document.getElementById("exitButton").addEventListener("click", function() {
+        window.close();
+    });
+</script>
+        </main>
+    
+  <div class="nav-bar">
+   <a href="index.html">
+    <i class="fas fa-home"></i>
+    <span>
+     Rumah
+    </span>
+   </a>
+   <a href="belanja.html">
+    <i class="fas fa-shopping-cart"></i>
+    <span>
+     Belanja
+    </span>
+   </a>
+   <a href="contact.html">
+    <i class="fas fa-user"></i>
+    <span>
+     Kontak
+    </span>
+   </a>
+  </body>
+</html>

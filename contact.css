@@ -1,0 +1,328 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #007acc, #00b0ff);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 0 0 30px 30px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #005b99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 20px 0;
+}
+
+nav ul li {
+    margin: 0 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Main Content Styles */
+main {
+    padding: 60px 0;
+}
+
+section {
+    background: white;
+    padding: 35px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+    color: #005b99;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+ul li a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+ul li a:hover {
+    color: #ffcc00;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007acc;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #f4f4f8;
+    transform: translateY(-3px);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #007acc;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    border-radius: 30px 30px 0 0;
+}
+
+footer p {
+    font-size: 1.1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.8rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    section {
+        padding: 25px;
+    }
+}
+
+/* CSS untuk input nama */
+#name {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* CSS untuk input email */
+#email {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* CSS untuk input email */
+#email {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* CSS untuk input email */
+#number {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* CSS untuk textarea pesan */
+#message {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 100px; /* Tambahkan tinggi untuk textarea */
+}
+
+/* CSS untuk button kirim */
+input[type="submit"] {
+    display: inline-block;
+    background-color: #007acc;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #005b99;
+    transform: translateY(-3px);
+}
+
+/* Notification area */
+.notification {
+    display: none;
+    padding: 10px;
+    margin-bottom: 20px; /* Menambah jarak antara notifikasi dan form */
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Styling untuk notifikasi sukses */
+.success {
+    background-color: #4CAF50;
+}
+
+/* Styling untuk notifikasi error */
+.error {
+    background-color: #F44336;
+}
+
+h2 { 
+    text-align: center;
+    color: #333; 
+}
+
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        .nav-bar a {
+            color: #888;
+            text-decoration: none;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .nav-bar a i {
+            display: block;
+            font-size: 20px;
+        }
+        .nav-bar a span {
+            display: block;
+            font-size: 12px;
+        }
+
+        .header { 
+            background-color: #fff;
+            padding: 20px; 
+            color: white;
+            display: flex; 
+            justify-content: space-between;
+            align-items: center; 
+        }
+        .header a {
+            color: white; 
+            text-decoration: none; 
+            font-size: 18px;
+        }
+        .header a:hover { 
+            text-decoration: underline; 
+        }
+
+    /* Header Section */
+    .headerr {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .headerr img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    .headerr .info {
+      flex: 1;
+    }
+
+    .headerr .info h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .headerr .info p {
+      margin: 5px 0;
+      color: #777;
+    }
