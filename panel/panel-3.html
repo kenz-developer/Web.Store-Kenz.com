@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belanja X-Store Web</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <div class="header">
+    <h2>Form Belanja</h2>
+    </div>
+</body>
+
+<body>
+    <main>
+    <div class="container"> 
+        <section> 
+            <h2>Form Belanja</h2>
+            <p>Silahkan Isi Form Dibawah Sebelum Membeli.</p>
+            <form id="belanjaForm">
+                <div class="form-group">
+                    <label>Total Harga:</label>
+                    <p id="totalPrice">Rp0</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productName">Nama Produk:</label>
+                    <input type="text" id="productName" value="PANEL Ram: 3GB Cpu: 90%" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="customerName">Nama:</label>
+                    <input type="text" id="customerName" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Nomor Telepon:</label>
+                    <input type="tel" id="phoneNumber" placeholder="Masukkan nomor telepon" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Jumlah:</label>
+                    <input type="number" id="quantity" min="1" value="1" required>
+                </div>
+                <button type="button" id="kirimWa" class="cta-button">Kirim ke WhatsApp</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        const productName = document.getElementById('productName').value;
+        const productPrice = 3000; // Harga per produk (misalnya Rp1,000)
+        const customerNameInput = document.getElementById('customerName');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const quantityInput = document.getElementById('quantity');
+        const totalPriceElem = document.getElementById('totalPrice');
+        const kirimWaBtn = document.getElementById('kirimWa');
+
+        function updateTotal() {
+            const quantity = parseInt(quantityInput.value) || 0;
+            const totalPrice = productPrice * quantity;
+            totalPriceElem.textContent = `Rp${totalPrice.toLocaleString()}`;
+        }
+
+        quantityInput.addEventListener('input', updateTotal);
+
+        kirimWaBtn.addEventListener('click', () => {
+            const customerName = customerNameInput.value.trim();
+            const phoneNumber = phoneNumberInput.value.trim();
+            const quantity = quantityInput.value;
+            const totalPrice = totalPriceElem.textContent;
+
+            if (!customerName || !phoneNumber) {
+                alert('Harap isi nama dan nomor telepon!');
+                return;
+            }
+
+            const waUrl = `https://wa.me/6288215523477?text=${encodeURIComponent(
+                `New Message From: ${customerName}\n================\n• Nama: ${customerName}\n• Product: ${productName}\n• Quantity: ${quantity}\n• Price Total: ${totalPrice} \n================`
+            )}`;
+            window.open(waUrl, '_blank');
+        });
+
+        // Hitung total saat halaman pertama kali dimuat
+        updateTotal();
+        </script>
+    </main>
+    
+  <div class="nav-bar">
+   <a href="index.html">
+    <i class="fas fa-home"></i>
+    <span>
+     Rumah
+    </span>
+   </a>
+   <a href="belanja.html">
+    <i class="fas fa-shopping-cart"></i>
+    <span>
+     Belanja
+    </span>
+   </a>
+   <a href="contact.html">
+    <i class="fas fa-user"></i>
+    <span>
+     Kontak
+    </span>
+   </a>
+  </body>
+</html>
