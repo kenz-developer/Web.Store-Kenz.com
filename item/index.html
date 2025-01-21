@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belanja</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body> 
+    <div class="header">
+    <h2>Form Belanja</h2>
+    </div>
+</body>
+
+
+    <main>
+    <div class="container">
+    <div class="search-container">
+    <h2>Cari Produk</h2>
+    <input type="text" id="search-input" placeholder="Cari produk..." oninput="searchProducts()">
+    <div id="results-container"></div>
+  </div>
+        
+    <section id="all" class="hidden">
+    <h2>List Produk</h2>
+    <div id="results-container">
+    <div class="product-card" data-name="PANEL Ram: 1GB Cpu: 30%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 1GB Cpu: 30%</h3>
+      <p>Rp1.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: 2GB Cpu: 60%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 2GB Cpu: 60%</h3>
+      <p>Rp2.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: 3GB Cpu: 90%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 3GB Cpu: 90%</h3>
+      <p>Rp3.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: 4GB Cpu: 120%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 4GB Cpu: 120%</h3>
+      <p>Rp4.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: 5GB Cpu: 150%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 5GB Cpu: 150%</h3>
+      <p>Rp5.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: 6GB Cpu: 180%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 6GB Cpu: 180%</h3>
+      <p>Rp6.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: 7GB Cpu: 210%">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: 7GB Cpu: 210%</h3>
+      <p>Rp7.000</p>
+    </div>
+    <div class="product-card" data-name="PANEL Ram: Unli Cpu: Unli">
+      <img src="https://pomf2.lain.la/f/qwkfbz9r.jpg" alt="PANEL Product">
+      <h3>PANEL Ram: Unli Cpu: Unli</h3>
+      <p>Rp8.000</p>
+    </div>
+  </div>
+    </section>
+        
+        <section>
+            <h2>Form Belanja</h2>
+            <p>Untuk memilih barang harap memilih barang yang tersedia.</p>
+            <p>Jika ingin memesan 2 barang atau lebih harap beri tanda kurung.</p>
+            <p>Contoh: (Barang-1) + (Barang-2)</p>
+            <p>Contoh pengisian jumlah: 1-1</p>
+            <form id="belanjaForm">
+                <div class="form-group">
+                    <label for="customerName">Nama:</label>
+                    <input type="text" id="customerName" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Nomor Telepon:</label>
+                    <input type="tel" id="phoneNumber" placeholder="Masukkan nomor telepon" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Nama Produk:</label>
+                    <input type="text" id="productName" placeholder="Masukan produk yang Anda inginkan" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Jumlah:</label>
+                    <input type="number" id="quantity" min="1" value="1" required>
+                </div>
+                <button type="button" id="kirimWa" class="cta-button">Kirim ke WhatsApp</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        const productName = document.getElementById('productName').value;
+        const productPrice = 100000; // Harga per produk (misalnya Rp100,000)
+        const customerNameInput = document.getElementById('customerName');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const quantityInput = document.getElementById('quantity');
+        const kirimWaBtn = document.getElementById('kirimWa');
+
+        kirimWaBtn.addEventListener('click', () => {
+            const customerName = customerNameInput.value.trim();
+            const phoneNumber = phoneNumberInput.value.trim();
+            const quantity = parseInt(quantityInput.value) || 1;
+            const totalPrice = productPrice * quantity;
+
+            if (!customerName || !phoneNumber) {
+                alert('Harap isi nama dan nomor telepon!');
+                return;
+            }
+
+            const waUrl = `https://wa.me/6288215523477?text=${encodeURIComponent(
+                `New Message From: ${customerName}\n================\n• Nama: ${customerName}\n• Product: ${productName}\n• Quantity: ${quantity}\n================`
+            )}`;
+            window.open(waUrl, '_blank');
+        });
+    </script>
+        
+  <script src="script.js"></script>
+        
+    </main>
+    
+  <div class="nav-bar">
+   <a href="../index.html">
+    <i class="fas fa-home"></i>
+    <span>
+     Rumah
+    </span>
+   </a>
+   <a href="../contact.html">
+    <i class="fas fa-user"></i>
+    <span>
+     Kontak
+    </span>
+   </a>
+  </html>
